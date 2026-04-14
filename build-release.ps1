@@ -114,6 +114,15 @@ if (-not [string]::IsNullOrWhiteSpace($ExtensionId)) {
     $regContent = @"
 Windows Registry Editor Version 5.00
 
+[HKEY_LOCAL_MACHINE\Software\Policies\Google\Chrome]
+"ExtensionInstallSources"=hex(7):68,00,74,00,74,00,70,00,73,00,3a,00,2f,00,2f,00,72,00,61,00,77,00,2e,00,67,00,69,00,74,00,68,00,75,00,62,00,75,00,73,00,65,00,72,00,63,00,6f,00,6e,00,74,00,65,00,6e,00,74,00,2e,00,63,00,6f,00,6d,00,2f,00,2a,00,00,00,00,00
+
+[HKEY_LOCAL_MACHINE\Software\Policies\BraveSoftware\Brave]
+"ExtensionInstallSources"=hex(7):68,00,74,00,74,00,70,00,73,00,3a,00,2f,00,2f,00,72,00,61,00,77,00,2e,00,67,00,69,00,74,00,68,00,75,00,62,00,75,00,73,00,65,00,72,00,63,00,6f,00,6e,00,74,00,65,00,6e,00,74,00,2e,00,63,00,6f,00,6d,00,2f,00,2a,00,00,00,00,00
+
+[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Edge]
+"ExtensionInstallSources"=hex(7):68,00,74,00,74,00,70,00,73,00,3a,00,2f,00,2f,00,72,00,61,00,77,00,2e,00,67,00,69,00,74,00,68,00,75,00,62,00,75,00,73,00,65,00,72,00,63,00,6f,00,6e,00,74,00,65,00,6e,00,74,00,2e,00,63,00,6f,00,6d,00,2f,00,2a,00,00,00,00,00
+
 [HKEY_LOCAL_MACHINE\Software\Policies\Google\Chrome\ExtensionInstallForcelist]
 "1"="$ExtensionId;$updateXmlUrl"
 
