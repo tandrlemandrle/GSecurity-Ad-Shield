@@ -1,0 +1,632 @@
+[
+  {
+    "id": 1,
+    "priority": 1,
+    "action": { "type": "block" },
+    "condition": {
+      "urlFilter": "||doubleclick.net",
+      "excludedDomains": ["youtube.com", "www.youtube.com", "m.youtube.com", "music.youtube.com"]
+    }
+  },
+  {
+    "id": 2,
+    "priority": 1,
+    "action": { "type": "block" },
+    "condition": {
+      "urlFilter": "||googleadservices.com",
+      "excludedDomains": ["youtube.com", "www.youtube.com", "m.youtube.com", "music.youtube.com"]
+    }
+  },
+  {
+    "id": 3,
+    "priority": 1,
+    "action": { "type": "block" },
+    "condition": {
+      "urlFilter": "||googlesyndication.com",
+      "excludedDomains": ["youtube.com", "www.youtube.com", "m.youtube.com", "music.youtube.com"]
+    }
+  },
+  {
+    "id": 4,
+    "priority": 1,
+    "action": { "type": "block" },
+    "condition": {
+      "urlFilter": "||adservice.google",
+      "excludedDomains": ["youtube.com", "www.youtube.com", "m.youtube.com", "music.youtube.com"]
+    }
+  },
+  {
+    "id": 5,
+    "priority": 1,
+    "action": { "type": "block" },
+    "condition": {
+      "urlFilter": "||adnxs.com",
+      "excludedDomains": ["youtube.com", "www.youtube.com", "m.youtube.com", "music.youtube.com"]
+    }
+  },
+  {
+    "id": 6,
+    "priority": 1,
+    "action": { "type": "block" },
+    "condition": {
+      "urlFilter": "||taboola.com",
+      "excludedDomains": ["youtube.com", "www.youtube.com", "m.youtube.com", "music.youtube.com"]
+    }
+  },
+  {
+    "id": 7,
+    "priority": 1,
+    "action": { "type": "block" },
+    "condition": {
+      "urlFilter": "||outbrain.com",
+      "excludedDomains": ["youtube.com", "www.youtube.com", "m.youtube.com", "music.youtube.com"]
+    }
+  },
+  {
+    "id": 8,
+    "priority": 1,
+    "action": { "type": "block" },
+    "condition": {
+      "urlFilter": "||criteo.com",
+      "excludedDomains": ["youtube.com", "www.youtube.com", "m.youtube.com", "music.youtube.com"]
+    }
+  },
+  {
+    "id": 9,
+    "priority": 1,
+    "action": { "type": "block" },
+    "condition": {
+      "urlFilter": "||scorecardresearch.com",
+      "excludedDomains": ["youtube.com", "www.youtube.com", "m.youtube.com", "music.youtube.com"]
+    }
+  },
+  {
+    "id": 10,
+    "priority": 1,
+    "action": { "type": "block" },
+    "condition": {
+      "urlFilter": "||pubmatic.com",
+      "excludedDomains": ["youtube.com", "www.youtube.com", "m.youtube.com", "music.youtube.com"]
+    }
+  },
+  {
+    "id": 11,
+    "priority": 1,
+    "action": { "type": "block" },
+    "condition": {
+      "urlFilter": "||rubiconproject.com",
+      "excludedDomains": ["youtube.com", "www.youtube.com", "m.youtube.com", "music.youtube.com"]
+    }
+  },
+  {
+    "id": 12,
+    "priority": 1,
+    "action": { "type": "block" },
+    "condition": {
+      "urlFilter": "||google-analytics.com",
+      "excludedDomains": ["youtube.com", "www.youtube.com", "m.youtube.com", "music.youtube.com"]
+    }
+  },
+  {
+    "id": 13,
+    "priority": 1,
+    "action": { "type": "block" },
+    "condition": {
+      "urlFilter": "||googletagmanager.com",
+      "excludedDomains": ["youtube.com", "www.youtube.com", "m.youtube.com", "music.youtube.com"]
+    }
+  },
+  {
+    "id": 14,
+    "priority": 1,
+    "action": { "type": "block" },
+    "condition": {
+      "urlFilter": "||googletagservices.com",
+      "excludedDomains": ["youtube.com", "www.youtube.com", "m.youtube.com", "music.youtube.com"]
+    }
+  },
+  {
+    "id": 15,
+    "priority": 1,
+    "action": { "type": "block" },
+    "condition": {
+      "urlFilter": "||pagead2.googlesyndication.com",
+      "excludedDomains": ["youtube.com", "www.youtube.com", "m.youtube.com", "music.youtube.com"]
+    }
+  },
+  {
+    "id": 16,
+    "priority": 1,
+    "action": { "type": "block" },
+    "condition": {
+      "regexFilter": "^https?://r[0-9]+---sn-[a-z0-9]+\\.googlevideo\\.com/.*",
+      "excludedDomains": ["youtube.com", "www.youtube.com", "m.youtube.com", "music.youtube.com"]
+    }
+  },
+  {
+    "id": 17,
+    "priority": 1,
+    "action": { "type": "block" },
+    "condition": {
+      "urlFilter": "||quantserve.com",
+      "excludedDomains": ["youtube.com", "www.youtube.com", "m.youtube.com", "music.youtube.com"]
+    }
+  },
+  {
+    "id": 18,
+    "priority": 1,
+    "action": { "type": "block" },
+    "condition": {
+      "urlFilter": "||quantcast.com",
+      "excludedDomains": ["youtube.com", "www.youtube.com", "m.youtube.com", "music.youtube.com"]
+    }
+  },
+  {
+    "id": 19,
+    "priority": 1,
+    "action": { "type": "block" },
+    "condition": {
+      "urlFilter": "||omniture.com",
+      "excludedDomains": ["youtube.com", "www.youtube.com", "m.youtube.com", "music.youtube.com"]
+    }
+  },
+  {
+    "id": 20,
+    "priority": 1,
+    "action": { "type": "block" },
+    "condition": {
+      "urlFilter": "||comscore.com",
+      "excludedDomains": ["youtube.com", "www.youtube.com", "m.youtube.com", "music.youtube.com"]
+    }
+  },
+  {
+    "id": 21,
+    "priority": 1,
+    "action": { "type": "block" },
+    "condition": {
+      "urlFilter": "||krux.com",
+      "excludedDomains": ["youtube.com", "www.youtube.com", "m.youtube.com", "music.youtube.com"]
+    }
+  },
+  {
+    "id": 22,
+    "priority": 1,
+    "action": { "type": "block" },
+    "condition": {
+      "urlFilter": "||bluekai.com",
+      "excludedDomains": ["youtube.com", "www.youtube.com", "m.youtube.com", "music.youtube.com"]
+    }
+  },
+  {
+    "id": 23,
+    "priority": 1,
+    "action": { "type": "block" },
+    "condition": {
+      "urlFilter": "||exelate.com",
+      "excludedDomains": ["youtube.com", "www.youtube.com", "m.youtube.com", "music.youtube.com"]
+    }
+  },
+  {
+    "id": 24,
+    "priority": 1,
+    "action": { "type": "block" },
+    "condition": {
+      "urlFilter": "||adform.com",
+      "excludedDomains": ["youtube.com", "www.youtube.com", "m.youtube.com", "music.youtube.com"]
+    }
+  },
+  {
+    "id": 25,
+    "priority": 1,
+    "action": { "type": "block" },
+    "condition": {
+      "urlFilter": "||adroll.com",
+      "excludedDomains": ["youtube.com", "www.youtube.com", "m.youtube.com", "music.youtube.com"]
+    }
+  },
+  {
+    "id": 26,
+    "priority": 1,
+    "action": { "type": "block" },
+    "condition": {
+      "urlFilter": "||vungle.com",
+      "excludedDomains": ["youtube.com", "www.youtube.com", "m.youtube.com", "music.youtube.com"]
+    }
+  },
+  {
+    "id": 27,
+    "priority": 1,
+    "action": { "type": "block" },
+    "condition": {
+      "urlFilter": "||inmobi.com",
+      "excludedDomains": ["youtube.com", "www.youtube.com", "m.youtube.com", "music.youtube.com"]
+    }
+  },
+  {
+    "id": 28,
+    "priority": 1,
+    "action": { "type": "block" },
+    "condition": {
+      "urlFilter": "||flurry.com",
+      "excludedDomains": ["youtube.com", "www.youtube.com", "m.youtube.com", "music.youtube.com"]
+    }
+  },
+  {
+    "id": 29,
+    "priority": 1,
+    "action": { "type": "block" },
+    "condition": {
+      "urlFilter": "||mixpanel.com",
+      "excludedDomains": ["youtube.com", "www.youtube.com", "m.youtube.com", "music.youtube.com"]
+    }
+  },
+  {
+    "id": 30,
+    "priority": 1,
+    "action": { "type": "block" },
+    "condition": {
+      "urlFilter": "||heap.io",
+      "excludedDomains": ["youtube.com", "www.youtube.com", "m.youtube.com", "music.youtube.com"]
+    }
+  },
+  {
+    "id": 31,
+    "priority": 1,
+    "action": { "type": "block" },
+    "condition": {
+      "urlFilter": "||amplitude.com",
+      "excludedDomains": ["youtube.com", "www.youtube.com", "m.youtube.com", "music.youtube.com"]
+    }
+  },
+  {
+    "id": 32,
+    "priority": 1,
+    "action": { "type": "block" },
+    "condition": {
+      "urlFilter": "||optimizely.com",
+      "excludedDomains": ["youtube.com", "www.youtube.com", "m.youtube.com", "music.youtube.com"]
+    }
+  },
+  {
+    "id": 33,
+    "priority": 1,
+    "action": { "type": "block" },
+    "condition": {
+      "urlFilter": "||bizible.com",
+      "excludedDomains": ["youtube.com", "www.youtube.com", "m.youtube.com", "music.youtube.com"]
+    }
+  },
+  {
+    "id": 34,
+    "priority": 1,
+    "action": { "type": "block" },
+    "condition": {
+      "urlFilter": "||pardot.com",
+      "excludedDomains": ["youtube.com", "www.youtube.com", "m.youtube.com", "music.youtube.com"]
+    }
+  },
+  {
+    "id": 35,
+    "priority": 1,
+    "action": { "type": "block" },
+    "condition": {
+      "urlFilter": "||hubspot.com",
+      "excludedDomains": ["youtube.com", "www.youtube.com", "m.youtube.com", "music.youtube.com"]
+    }
+  },
+  {
+    "id": 36,
+    "priority": 1,
+    "action": { "type": "block" },
+    "condition": {
+      "urlFilter": "||marketo.com",
+      "excludedDomains": ["youtube.com", "www.youtube.com", "m.youtube.com", "music.youtube.com"]
+    }
+  },
+  {
+    "id": 37,
+    "priority": 1,
+    "action": { "type": "block" },
+    "condition": {
+      "urlFilter": "||eloqua.com",
+      "excludedDomains": ["youtube.com", "www.youtube.com", "m.youtube.com", "music.youtube.com"]
+    }
+  },
+  {
+    "id": 38,
+    "priority": 1,
+    "action": { "type": "block" },
+    "condition": {
+      "urlFilter": "||media.net",
+      "excludedDomains": ["youtube.com", "www.youtube.com", "m.youtube.com", "music.youtube.com"]
+    }
+  },
+  {
+    "id": 39,
+    "priority": 1,
+    "action": { "type": "block" },
+    "condition": {
+      "urlFilter": "||appnexus.com",
+      "excludedDomains": ["youtube.com", "www.youtube.com", "m.youtube.com", "music.youtube.com"]
+    }
+  },
+  {
+    "id": 40,
+    "priority": 1,
+    "action": { "type": "block" },
+    "condition": {
+      "urlFilter": "||adbrite.com",
+      "excludedDomains": ["youtube.com", "www.youtube.com", "m.youtube.com", "music.youtube.com"]
+    }
+  },
+  {
+    "id": 41,
+    "priority": 1,
+    "action": { "type": "block" },
+    "condition": {
+      "urlFilter": "||admob.com",
+      "excludedDomains": ["youtube.com", "www.youtube.com", "m.youtube.com", "music.youtube.com"]
+    }
+  },
+  {
+    "id": 42,
+    "priority": 1,
+    "action": { "type": "block" },
+    "condition": {
+      "urlFilter": "||adsonar.com",
+      "excludedDomains": ["youtube.com", "www.youtube.com", "m.youtube.com", "music.youtube.com"]
+    }
+  },
+  {
+    "id": 43,
+    "priority": 1,
+    "action": { "type": "block" },
+    "condition": {
+      "urlFilter": "||zergnet.com",
+      "excludedDomains": ["youtube.com", "www.youtube.com", "m.youtube.com", "music.youtube.com"]
+    }
+  },
+  {
+    "id": 44,
+    "priority": 1,
+    "action": { "type": "block" },
+    "condition": {
+      "urlFilter": "||revcontent.com",
+      "excludedDomains": ["youtube.com", "www.youtube.com", "m.youtube.com", "music.youtube.com"]
+    }
+  },
+  {
+    "id": 45,
+    "priority": 1,
+    "action": { "type": "block" },
+    "condition": {
+      "urlFilter": "||mgid.com",
+      "excludedDomains": ["youtube.com", "www.youtube.com", "m.youtube.com", "music.youtube.com"]
+    }
+  },
+  {
+    "id": 46,
+    "priority": 1,
+    "action": { "type": "block" },
+    "condition": {
+      "urlFilter": "||adblade.com",
+      "excludedDomains": ["youtube.com", "www.youtube.com", "m.youtube.com", "music.youtube.com"]
+    }
+  },
+  {
+    "id": 47,
+    "priority": 1,
+    "action": { "type": "block" },
+    "condition": {
+      "urlFilter": "||adcolony.com",
+      "excludedDomains": ["youtube.com", "www.youtube.com", "m.youtube.com", "music.youtube.com"]
+    }
+  },
+  {
+    "id": 48,
+    "priority": 1,
+    "action": { "type": "block" },
+    "condition": {
+      "urlFilter": "||chartbeat.com",
+      "excludedDomains": ["youtube.com", "www.youtube.com", "m.youtube.com", "music.youtube.com"]
+    }
+  },
+  {
+    "id": 49,
+    "priority": 1,
+    "action": { "type": "block" },
+    "condition": {
+      "urlFilter": "||newrelic.com",
+      "excludedDomains": ["youtube.com", "www.youtube.com", "m.youtube.com", "music.youtube.com"]
+    }
+  },
+  {
+    "id": 50,
+    "priority": 1,
+    "action": { "type": "block" },
+    "condition": {
+      "urlFilter": "||pingdom.net",
+      "excludedDomains": ["youtube.com", "www.youtube.com", "m.youtube.com", "music.youtube.com"]
+    }
+  },
+  {
+    "id": 51,
+    "priority": 1,
+    "action": { "type": "block" },
+    "condition": {
+      "urlFilter": "||kissmetrics.com",
+      "excludedDomains": ["youtube.com", "www.youtube.com", "m.youtube.com", "music.youtube.com"]
+    }
+  },
+  {
+    "id": 52,
+    "priority": 1,
+    "action": { "type": "block" },
+    "condition": {
+      "urlFilter": "||tradedesk.com",
+      "excludedDomains": ["youtube.com", "www.youtube.com", "m.youtube.com", "music.youtube.com"]
+    }
+  },
+  {
+    "id": 53,
+    "priority": 1,
+    "action": { "type": "block" },
+    "condition": {
+      "urlFilter": "||turn.com",
+      "excludedDomains": ["youtube.com", "www.youtube.com", "m.youtube.com", "music.youtube.com"]
+    }
+  },
+  {
+    "id": 54,
+    "priority": 1,
+    "action": { "type": "block" },
+    "condition": {
+      "urlFilter": "||adscale.com",
+      "excludedDomains": ["youtube.com", "www.youtube.com", "m.youtube.com", "music.youtube.com"]
+    }
+  },
+  {
+    "id": 55,
+    "priority": 1,
+    "action": { "type": "block" },
+    "condition": {
+      "urlFilter": "||bannerflow.com",
+      "excludedDomains": ["youtube.com", "www.youtube.com", "m.youtube.com", "music.youtube.com"]
+    }
+  },
+  {
+    "id": 56,
+    "priority": 1,
+    "action": { "type": "block" },
+    "condition": {
+      "urlFilter": "||nativeads.com",
+      "excludedDomains": ["youtube.com", "www.youtube.com", "m.youtube.com", "music.youtube.com"]
+    }
+  },
+  {
+    "id": 57,
+    "priority": 1,
+    "action": { "type": "block" },
+    "condition": {
+      "urlFilter": "||contentad.com",
+      "excludedDomains": ["youtube.com", "www.youtube.com", "m.youtube.com", "music.youtube.com"]
+    }
+  },
+  {
+    "id": 58,
+    "priority": 1,
+    "action": { "type": "block" },
+    "condition": {
+      "urlFilter": "||displayads.com",
+      "excludedDomains": ["youtube.com", "www.youtube.com", "m.youtube.com", "music.youtube.com"]
+    }
+  },
+  {
+    "id": 59,
+    "priority": 1,
+    "action": { "type": "block" },
+    "condition": {
+      "regexFilter": ".*/ads?/.*",
+      "excludedDomains": ["youtube.com", "www.youtube.com", "m.youtube.com", "music.youtube.com"]
+    }
+  },
+  {
+    "id": 60,
+    "priority": 1,
+    "action": { "type": "block" },
+    "condition": {
+      "regexFilter": ".*/ad[sx]?\\b.*",
+      "excludedDomains": ["youtube.com", "www.youtube.com", "m.youtube.com", "music.youtube.com"]
+    }
+  },
+  {
+    "id": 61,
+    "priority": 1,
+    "action": { "type": "block" },
+    "condition": {
+      "regexFilter": ".*[?&](ad|ads|adunit|adformat|adtag|adslot|adpage|adspace|adgroup|adserver|adpageurl)=.*",
+      "excludedDomains": ["youtube.com", "www.youtube.com", "m.youtube.com", "music.youtube.com"]
+    }
+  },
+  {
+    "id": 62,
+    "priority": 1,
+    "action": { "type": "block" },
+    "condition": {
+      "urlFilter": "||google_tag",
+      "excludedDomains": ["youtube.com", "www.youtube.com", "m.youtube.com", "music.youtube.com"]
+    }
+  },
+  {
+    "id": 63,
+    "priority": 1,
+    "action": { "type": "block" },
+    "condition": {
+      "regexFilter": ".*\\.(swf|xss).*",
+      "excludedDomains": ["youtube.com", "www.youtube.com", "m.youtube.com", "music.youtube.com"]
+    }
+  },
+  {
+    "id": 64,
+    "priority": 1,
+    "action": { "type": "block" },
+    "condition": {
+      "regexFilter": ".*/pixel/.*",
+      "excludedDomains": ["youtube.com", "www.youtube.com", "m.youtube.com", "music.youtube.com"]
+    }
+  },
+  {
+    "id": 65,
+    "priority": 1,
+    "action": { "type": "block" },
+    "condition": {
+      "regexFilter": ".*/beacon/.*",
+      "excludedDomains": ["youtube.com", "www.youtube.com", "m.youtube.com", "music.youtube.com"]
+    }
+  },
+  {
+    "id": 66,
+    "priority": 1,
+    "action": { "type": "block" },
+    "condition": {
+      "regexFilter": ".*/tracking/.*",
+      "excludedDomains": ["youtube.com", "www.youtube.com", "m.youtube.com", "music.youtube.com"]
+    }
+  },
+  {
+    "id": 67,
+    "priority": 1,
+    "action": { "type": "block" },
+    "condition": {
+      "regexFilter": ".*/tracker/.*",
+      "excludedDomains": ["youtube.com", "www.youtube.com", "m.youtube.com", "music.youtube.com"]
+    }
+  },
+  {
+    "id": 68,
+    "priority": 1,
+    "action": { "type": "block" },
+    "condition": {
+      "urlFilter": "||facebook.com/tr",
+      "excludedDomains": ["youtube.com", "www.youtube.com", "m.youtube.com", "music.youtube.com"]
+    }
+  },
+  {
+    "id": 69,
+    "priority": 1,
+    "action": { "type": "block" },
+    "condition": {
+      "urlFilter": "||facebook.com/tr/",
+      "excludedDomains": ["youtube.com", "www.youtube.com", "m.youtube.com", "music.youtube.com"]
+    }
+  },
+  {
+    "id": 70,
+    "priority": 1,
+    "action": { "type": "block" },
+    "condition": {
+      "urlFilter": "||connect.facebook.net",
+      "excludedDomains": ["youtube.com", "www.youtube.com", "m.youtube.com", "music.youtube.com"]
+    }
+  }
+]

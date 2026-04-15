@@ -5,11 +5,22 @@
     "description":  "YouTube-focused and generic ad suppression via main-world and content script hooks.",
     "minimum_chrome_version":  "114",
     "permissions":  [
-
+                        "scripting",
+                        "declarativeNetRequest"
                     ],
     "host_permissions":  [
-                             "*://*.youtube.com/*"
+                             "*://*.youtube.com/*",
+                             "\u003call_urls\u003e"
                          ],
+    "declarative_net_request":  {
+                                    "rule_resources":  [
+                                                           {
+                                                               "id":  "ruleset_1",
+                                                               "enabled":  true,
+                                                               "path":  "rules.json"
+                                                           }
+                                                       ]
+                                },
     "background":  {
                        "service_worker":  "background.js"
                    },

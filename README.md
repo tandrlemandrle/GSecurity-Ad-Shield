@@ -1,1 +1,0 @@
-# GSecurity-Ad-Shield

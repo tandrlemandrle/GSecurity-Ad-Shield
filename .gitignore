@@ -1,0 +1,37 @@
+# Extension build artifacts
+*.crx
+key.pem
+
+# Allow releases folder to be tracked (contains versioned releases)
+# The releases/ folder is used by Upload-GitHub-Repos.ps1
+!releases/**/*.crx
+!releases/**/*.reg
+!releases/**/*.xml
+
+# Chrome extension metadata (auto-generated)
+!dist/
+!_metadata/
+
+# Temporary files
+*.tmp
+*.temp
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+*.suo
+*.user
+
+# Backup files
+*.zip
+*.bak
+*~
+
+# Scripts (keep source, exclude from extension package)
+build-*.ps1
+build-*.bat

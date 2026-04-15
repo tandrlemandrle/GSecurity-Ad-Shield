@@ -1,21 +1,26 @@
 ﻿{
     "manifest_version":  3,
     "name":  "GSecurity Ad Shield",
-    "version":  "0.3.0",
+    "version":  "0.2.0",
     "description":  "YouTube-focused and generic ad suppression via main-world and content script hooks.",
     "minimum_chrome_version":  "114",
     "permissions":  [
-                        "declarativeNetRequest",
-                        "declarativeNetRequestWithHostAccess"
+                        "scripting",
+                        "declarativeNetRequest"
                     ],
     "host_permissions":  [
                              "*://*.youtube.com/*",
-                             "*://*.googlevideo.com/*",
-                             "*://*.googletagmanager.com/*",
-                             "*://*.googlesyndication.com/*",
-                             "*://*.doubleclick.net/*",
-                             "*://*.googleadservices.com/*"
+                             "\u003call_urls\u003e"
                          ],
+    "declarative_net_request":  {
+                                    "rule_resources":  [
+                                                           {
+                                                               "id":  "ruleset_1",
+                                                               "enabled":  true,
+                                                               "path":  "rules.json"
+                                                           }
+                                                       ]
+                                },
     "background":  {
                        "service_worker":  "background.js"
                    },
