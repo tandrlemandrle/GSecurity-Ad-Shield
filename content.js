@@ -1,84 +1,126 @@
+/**
+ * GSecurity Ad Shield — YouTube content script.
+ * Runs on youtube.com AND youtube-nocookie.com (embedded players on Discord, etc.)
+ * with all_frames: true so it fires inside iframes too.
+ */
 (function () {
-  if (window.__yasContentInjected) return;
-  window.__yasContentInjected = true;
+  if (window.__gsecYtInjected) return;
+  window.__gsecYtInjected = true;
 
-  const whitelist = [
-    "twitter.com",
-    "x.com",
-    "perplexity.ai",
-    "mediafire.com",
-    "apple.com",
-    "citibank.com",
-    "ebay.com",
-    "yahoo.com",
-    "discord.com",
-    "discordapp.com",
-    "cdn.discordapp.com",
-    "aliexpress.com",
-    "tenor.com",
-    "media.tenor.com",
-    "wolt.com",
-    "woltapp.com"
-  ];
-
-  const isWhitelistedHost = (host) => {
-    const h = String(host || "").toLowerCase();
-    return whitelist.some((domain) => h === domain || h.endsWith(`.${domain}`));
+  /* ── Inject main-world script for JSON.parse / ytInitialData hooks ── */
+  const injectMainWorld = () => {
+    try {
+      const src = chrome.runtime.getURL("main-world.js");
+      const s = document.createElement("script");
+      s.src = src;
+      s.async = false;
+      (document.head || document.documentElement).appendChild(s);
+      s.remove();
+    } catch (_) {
+      // Extension context may be invalid in some embed scenarios.
+    }
   };
 
-  if (isWhitelistedHost(location.hostname)) return;
-
-  const injectMainWorldScript = () => {
-    const src = chrome.runtime.getURL("main-world.js");
-    const s = document.createElement("script");
-    s.src = src;
-    s.async = false;
-    (document.head || document.documentElement).appendChild(s);
-    s.remove();
-  };
-
-  const injectYouTubeCollapseCss = () => {
-    if (!location.hostname.includes("youtube.com")) return;
-    if (document.getElementById("yas-youtube-collapse-css")) return;
+  /* ── CSS: collapse known ad renderers ── */
+  const injectCollapseCss = () => {
+    if (document.getElementById("gsec-yt-css")) return;
     const style = document.createElement("style");
-    style.id = "yas-youtube-collapse-css";
+    style.id = "gsec-yt-css";
     style.textContent = `
-      /* Hide known ad/sponsor renderers only (safe scope). */
       ytd-display-ad-renderer,
       ytd-ad-slot-renderer,
       ytd-promoted-video-renderer,
-      ytd-promoted-sparkles-web-renderer {
+      ytd-promoted-sparkles-web-renderer,
+      ytd-promoted-sparkles-text-search-renderer,
+      ytd-banner-promo-renderer,
+      ytd-statement-banner-renderer,
+      ytd-in-feed-ad-layout-renderer,
+      ytd-masthead-ad-renderer,
+      ytd-primetime-promo-renderer,
+      ytd-compact-promoted-video-renderer,
+      ytd-action-companion-ad-renderer,
+      ytd-engagement-panel-section-list-renderer[target-id="engagement-panel-ads"],
+      #masthead-ad,
+      #player-ads,
+      .video-ads,
+      .ytp-ad-module,
+      .ytp-ad-overlay-container,
+      .ytp-ad-player-overlay,
+      .ytp-ad-action-interstitial,
+      .ytp-ad-image-overlay,
+      .ytp-ad-text-overlay,
+      .ytp-ad-skip-ad-slot,
+      .ad-showing .ytp-ad-module,
+      tp-yt-paper-dialog:has(#dismiss-button),
+      ytd-popup-container:has(a[href*="/premium"]),
+      ytd-mealbar-promo-renderer,
+      ytd-enforcement-message-view-model {
         display: none !important;
       }
     `;
     (document.head || document.documentElement).appendChild(style);
   };
 
+  /* ── DOM scrubbing ── */
+  const AD_SELECTORS = [
+    ".video-ads",
+    ".ytp-ad-module",
+    ".ytp-ad-overlay-container",
+    ".ytp-ad-player-overlay",
+    ".ytp-ad-action-interstitial",
+    ".ytp-ad-image-overlay",
+    ".ytp-ad-text-overlay",
+    "#player-ads",
+    "#masthead-ad",
+    "ytd-display-ad-renderer",
+    "ytd-ad-slot-renderer",
+    "ytd-promoted-video-renderer",
+    "ytd-promoted-sparkles-web-renderer",
+    "ytd-promoted-sparkles-text-search-renderer",
+    "ytd-banner-promo-renderer",
+    "ytd-statement-banner-renderer",
+    "ytd-in-feed-ad-layout-renderer",
+    "ytd-masthead-ad-renderer",
+    "ytd-primetime-promo-renderer",
+    "ytd-compact-promoted-video-renderer",
+    "ytd-action-companion-ad-renderer",
+    "ytd-mealbar-promo-renderer",
+    "ytd-enforcement-message-view-model",
+    'ytd-engagement-panel-section-list-renderer[target-id="engagement-panel-ads"]',
+    // Feed items wrapping ads
+    "ytd-rich-item-renderer:has(ytd-ad-slot-renderer)",
+    "ytd-rich-item-renderer:has(ytd-display-ad-renderer)",
+    "ytd-rich-item-renderer:has(ytd-promoted-video-renderer)",
+    "ytd-rich-item-renderer:has(ytd-promoted-sparkles-web-renderer)",
+    "ytd-rich-section-renderer:has(ytd-ad-slot-renderer)",
+    // Search result ads
+    "ytd-search-pyv-renderer",
+    "ytd-movie-offer-module-renderer"
+  ];
+
+  const SKIP_BTN_SELECTORS = [
+    ".ytp-ad-skip-button",
+    ".ytp-skip-ad-button",
+    ".ytp-ad-skip-button-modern",
+    ".ytp-skip-ad-button__text",
+    'button[class*="skip"]',
+    ".ytp-ad-overlay-close-button"
+  ];
+
   const scrubYouTubeAds = () => {
-    const selectors = [
-      ".video-ads",
-      ".ytp-ad-module",
-      ".ytp-ad-overlay-container",
-      ".ytp-ad-player-overlay",
-      "#player-ads",
-      "ytd-display-ad-renderer",
-      "ytd-ad-slot-renderer",
-      "ytd-promoted-video-renderer",
-      "ytd-promoted-sparkles-web-renderer",
-      "ytd-rich-item-renderer:has(ytd-display-ad-renderer)",
-      "ytd-rich-item-renderer:has(ytd-ad-slot-renderer)",
-      "ytd-rich-item-renderer:has(ytd-promoted-video-renderer)",
-      "ytd-rich-item-renderer:has(ytd-promoted-sparkles-web-renderer)",
-      "ytd-rich-section-renderer:has(ytd-ad-slot-renderer)"
-    ];
-    for (const selector of selectors) {
-      document.querySelectorAll(selector).forEach((el) => el.remove());
+    // 1. Remove ad DOM elements
+    for (const sel of AD_SELECTORS) {
+      document.querySelectorAll(sel).forEach((el) => el.remove());
     }
 
-    document
-      .querySelectorAll(".ytp-ad-skip-button, .ytp-skip-ad-button, .ytp-ad-skip-button-modern")
-      .forEach((btn) => btn.click && btn.click());
+    // 2. Click any skip buttons
+    for (const sel of SKIP_BTN_SELECTORS) {
+      document.querySelectorAll(sel).forEach((btn) => {
+        if (btn.click) btn.click();
+      });
+    }
 
+    // 3. Fast-forward video ads that are currently playing
     const player = document.querySelector(".html5-video-player");
     const video = document.querySelector("video");
     if (player && player.classList.contains("ad-showing") && video) {
@@ -91,7 +133,7 @@
       player.classList.remove("ad-showing");
     }
 
-    // Narrow fallback: remove only shell cards with no title and no thumbnail image.
+    // 4. Remove residual empty feed shells (ad placeholders)
     document.querySelectorAll("ytd-rich-item-renderer").forEach((el) => {
       const hasAdMarker = !!el.querySelector(
         "ytd-ad-slot-renderer, ytd-display-ad-renderer, ytd-promoted-video-renderer, ytd-promoted-sparkles-web-renderer"
@@ -100,70 +142,45 @@
         el.remove();
         return;
       }
-
-      const hasTitle = !!el.querySelector("a#video-title-link, a#video-title[href], #video-title.ytd-rich-grid-media");
-      const hasThumbImage = !!el.querySelector("ytd-thumbnail img[src], ytd-thumbnail yt-image img[src], img.yt-core-image[src]");
+      const hasTitle = !!el.querySelector(
+        "a#video-title-link, a#video-title[href], #video-title.ytd-rich-grid-media"
+      );
+      const hasThumbImage = !!el.querySelector(
+        "ytd-thumbnail img[src], ytd-thumbnail yt-image img[src], img.yt-core-image[src]"
+      );
       if (!hasTitle && !hasThumbImage) {
         const compactText = (el.textContent || "").replace(/\s+/g, "");
-        if (compactText.length === 0) {
-          el.remove();
-        }
+        if (compactText.length === 0) el.remove();
       }
-
-      // Remove residual shells: thumbnail wrapper exists but no real image is present.
+      // Remove thumbnail shells with no real content
       const hasThumbnailShell = !!el.querySelector("ytd-thumbnail, a#thumbnail");
       if (hasThumbnailShell && !hasThumbImage) {
-        const hasDuration = !!el.querySelector("#text.ytd-thumbnail-overlay-time-status-renderer");
+        const hasDuration = !!el.querySelector(
+          "#text.ytd-thumbnail-overlay-time-status-renderer"
+        );
         const hasMenu = !!el.querySelector("ytd-menu-renderer");
-        // Keep only cards that look like real videos still loading metadata.
-        if (!hasDuration && !hasTitle && !hasMenu) {
-          el.remove();
-        }
+        if (!hasDuration && !hasTitle && !hasMenu) el.remove();
       }
     });
 
+    // 5. Dismiss "ad blockers are not allowed" popups
+    document.querySelectorAll("tp-yt-paper-dialog").forEach((dialog) => {
+      const text = (dialog.textContent || "").toLowerCase();
+      if (text.includes("ad blocker") || text.includes("allow ads")) {
+        const dismiss = dialog.querySelector("#dismiss-button, .dismiss-button, button");
+        if (dismiss && dismiss.click) dismiss.click();
+        dialog.remove();
+      }
+    });
   };
 
-  const scrubGenericAds = () => {
-    const selectors = [
-      "ins.adsbygoogle",
-      "iframe[src*='doubleclick']",
-      "iframe[src*='googlesyndication']",
-      "iframe[src*='googletagmanager']",
-      "[id*='google_ads']",
-      "[class*='ad-slot']",
-      "[class*='advert']",
-      "[class*='sponsor']",
-      "[data-ad]",
-      "[data-adunit]",
-      ".sponsored-content",
-      ".promoted",
-      ".ad-banner",
-      ".ad-container",
-      ".ad-wrapper"
-    ];
-    for (const selector of selectors) {
-      document.querySelectorAll(selector).forEach((el) => {
-        if (el && el.parentElement) {
-          el.remove();
-        }
-      });
-    }
-  };
+  /* ── Bootstrap ── */
+  injectMainWorld();
+  injectCollapseCss();
+  scrubYouTubeAds();
 
-  const scrubAllAds = () => {
-    if (location.hostname.includes("youtube.com")) {
-      scrubYouTubeAds();
-      return;
-    }
-    scrubGenericAds();
-  };
+  setInterval(scrubYouTubeAds, 250);
 
-  injectMainWorldScript();
-  injectYouTubeCollapseCss();
-  scrubAllAds();
-  setInterval(scrubAllAds, location.hostname.includes("youtube.com") ? 250 : 1000);
-
-  const observer = new MutationObserver(scrubAllAds);
+  const observer = new MutationObserver(scrubYouTubeAds);
   observer.observe(document.documentElement, { childList: true, subtree: true });
 })();
